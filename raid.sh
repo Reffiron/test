@@ -7,6 +7,7 @@
 mdadm --craete /dev/md3 -l 0 -n 2 /dev/sdb /dev/sdc#-l ${TYPE_RAID} -n ${TYPE_DISK} ${TYPE_PASS}
 mdadm --detail --scan --verbose | tee -a /etc/mdadm.conf
 mkfs.ext4 /dev/md3
-echo "/dev/md3    /raid    ext4    defaults    0    0" >> /etc/fstab
 mkdir /raid 
+echo "/dev/md3    /raid    ext4    defaults    0    0" >> /etc/fstab
+
 mount -a
